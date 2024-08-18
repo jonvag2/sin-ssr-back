@@ -1,8 +1,8 @@
 import express, { Application } from 'express';
 import userRoutes from '../routes/usuario';
-import usertalentoRoutes from '../routes/usuariostalento';
-import cors from 'cors';
-
+import contactoRoutes from '../routes/contacto';
+import cors from 'cors'; 
+ 
 import db from '../db/connection';
 
 
@@ -12,17 +12,17 @@ class Server {
     private port: string;
     private apiPaths = {
         usuarios: '/api/usuarios',
-        usuariostalento: '/talento/usuarios',
+        contactos: '/contactos/datos',
     }
 
     constructor() {
         this.app  = express();
         this.port = process.env.PORT || '8000';
-
+        
         // Métodos iniciales
         this.dbConnection();
         this.middlewares();
-        this.routes();
+        this.routes(); 
     }
 
     async dbConnection() {
@@ -32,6 +32,7 @@ class Server {
             await db.authenticate();
             console.log('\n Database online a traves de db.authenticate \n');
         } catch (error) {
+            console.log("no se establecio comunicacion con la BD")
             throw "new Error(error )";
         }
 
@@ -52,7 +53,7 @@ class Server {
 
     routes() {
         this.app.use( this.apiPaths.usuarios, userRoutes ),
-        this.app.use( this.apiPaths.usuariostalento, usertalentoRoutes )
+        this.app.use( this.apiPaths.contactos, contactoRoutes )
 
     }
 

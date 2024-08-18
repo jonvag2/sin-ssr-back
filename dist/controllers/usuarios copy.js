@@ -106,4 +106,4 @@ const deleteUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     res.json(usuario);
 });
 exports.deleteUsuario = deleteUsuario;
-//# sourceMappingURL=usuarios.js.map
+//# sourceMappingURL=usuarios%20copy.js.map
