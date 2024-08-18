@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 
 
- const db = new Sequelize('mapa-back', 'root', '', {
+ const db = new Sequelize('talentoDB', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
 }); 
